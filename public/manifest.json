@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "CRXJS Vanilla JS Example",
+    "version": "1.0.0",
+    "action": { "default_popup": "index.html" },
+    "background": {
+      "service_worker": "background/background.js",
+      "type": "module"
+    },
+    "permissions": ["storage", "tabs", "activeTab"]
+
+}
