@@ -36,7 +36,7 @@ async function getNotes() {
                     goToBtn.addEventListener("click", function (event) {
                         event.preventDefault();
                         chrome.tabs.create({
-                            url: `http://localhost:5173/editor/${response.notes[0]._id}`,
+                            url: `http://localhost:3000/editor/${response.notes[0]._id}`,
                         });
                     });
                     let content = markdown.toHTML(response.notes[0].markdown);
