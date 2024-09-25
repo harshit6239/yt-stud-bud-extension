@@ -54,12 +54,15 @@ async function getNotes() {
         });
 }
 
-chrome.storage.sync.get(["token", "login"], function (data) {
+chrome.storage.sync.get(["token"], function (data) {
     console.log(data);
     if (data.token) {
         document.getElementById("login").style.display = "none";
         document.getElementById("note").style.display = "flex";
         getNotes();
+    } else {
+        document.getElementById("login").style.display = "flex";
+        document.getElementById("note").style.display = "none";
     }
 });
 
@@ -85,9 +88,10 @@ document.getElementById("loginBtn").addEventListener("click", function (event) {
             } else if (response.error != undefined) {
                 document.getElementById("error").textContent = response.error;
             } else {
-                // document.getElementById("error")?.textContent = "";
+                document.getElementById("error").textContent = "";
                 document.getElementById("login").style.display = "none";
                 document.getElementById("note").style.display = "flex";
+                getNotes();
             }
         })
         .catch((error) => {
